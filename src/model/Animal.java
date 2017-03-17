@@ -2,16 +2,28 @@ package model;
 
 public class Animal 
 {
-	private String tipo;
-	private String raca;
-	private String dataNascimento;
+	private String tipo, raca, dataNascimento;
+	Ficha ficha;
 	
-	public Animal(String tipo, String raca, String dataNascimento)
+	public Animal(String tipo, String raca, String dataNascimento, Ficha ficha) 
 	{
 		super();
 		this.tipo = tipo;
 		this.raca = raca;
 		this.dataNascimento = dataNascimento;
+		this.ficha = ficha;
+	}
+	
+	public double getGastosVacinas()
+	{
+		double total = 0;
+		
+		for(Vacina v : ficha.getVacinas())
+		{
+			total += v.getPreco();
+		}
+		
+		return total;
 	}
 
 	public String getTipo() 
@@ -43,5 +55,17 @@ public class Animal
 	{
 		this.dataNascimento = dataNascimento;
 	}
+
+	public Ficha getFicha() 
+	{
+		return ficha;
+	}
+
+	public void setFicha(Ficha ficha) 
+	{
+		this.ficha = ficha;
+	}
+	
+	
 		
 }

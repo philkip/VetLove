@@ -2,8 +2,7 @@ package model;
 
 public class Vacina 
 {
-	private String data;
-	private String nome;
+	private String data, nome;
 	private double preco;
 	
 	public Vacina(String data, String nome, double preco) 

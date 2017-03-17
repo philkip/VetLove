@@ -1,9 +1,10 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
+import model.Animal;
 import model.Cliente;
+import model.Vacina;
 
 public class gereCliente 
 {
@@ -11,54 +12,52 @@ public class gereCliente
 	
 	public gereCliente()
 	{
-		arCliente = new ArrayList<>();
-		
-		addCliente();
-		visualizarData();
+		this.arCliente = new ArrayList<Cliente>();
 	}
 
-	public void addCliente()
+	public void addCliente(String nome, String morada, String email, String telefone)
 	{			
-		int clientID = 0;
-		String nome;
-		String morada;
-		String email;
-		String telefone;
+		Cliente cli = new Cliente(nome, morada, email, telefone);
 		
-		Scanner sc = new Scanner(System.in);
-		try
-		{
-			System.out.println("Nome: ");
-			nome = sc.nextLine();
-			System.out.println("Morada: ");
-			morada = sc.nextLine();
-			System.out.println("E-mail: ");
-			email = sc.nextLine();
-			System.out.println("Telefone: ");
-			telefone = sc.nextLine();
-			clientID++;
-		}
-		finally
-		{
-			sc.close();
-		}
+		int novoID = arCliente.size();
 		
-		Cliente cli = new Cliente(arCliente.size(), nome, morada, email, telefone);
+		cli.setClientID(novoID);
 		
-		arCliente.add(cli);
+		arCliente.add(cli);	
 	}
 	
-	public void visualizarData()
+	public Cliente getCliente(int id)
 	{
-		for(int i = 0; i < arCliente.size(); i++)
+		for(Cliente cli : arCliente)
 		{
-			System.out.println(arCliente.get(i).getClientID());
-			System.out.println(arCliente.get(i).getNome());
-			System.out.println(arCliente.get(i).getMorada());
-			System.out.println(arCliente.get(i).getEmail());
-			System.out.println(arCliente.get(i).getTelefone());
+			if(cli.getClientID() == id)
+				return cli;
 		}
 		
+		return null;
+	}
+	
+	public double getGastoVacinas(Cliente cli)
+	{
+		double totalVacAnimais = 0;
+			
+		for(Animal a : cli.getAnimais())//Para cada animal
+		{
+			double totalVacinaAnimal = 0;
+				
+			for(Vacina v : a.getFicha().getVacinas())//Para cada vacina
+			{
+				totalVacinaAnimal += v.getPreco();
+			}
+				
+			totalVacAnimais += totalVacinaAnimal;
+			/*
+			 * Pode ser substituido por
+			 * */
+			//totalVacAnimais += a.getGastosVacinas();
+		}
+				
+		return totalVacAnimais;
 	}
 	
 }

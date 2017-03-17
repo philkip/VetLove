@@ -2,8 +2,7 @@ package model;
 
 public class Consultas 
 {
-	private String data;
-	private String descricao;
+	private String data, descricao;
 	
 	public Consultas(String data, String descricao) 
 	{

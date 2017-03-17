@@ -1,37 +1,38 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Ficha 
 {	
-	private Vacina fichaVacina;
-	private Consultas fichaConsulta;
+	ArrayList<Vacina> vacinas;
+	ArrayList<Consultas> consultas;
 	
-	public Ficha(Vacina fichaVacina, Consultas fichaConsulta)
+	public Ficha(ArrayList<Vacina> vacinas, ArrayList<Consultas> consultas) 
 	{
 		super();
-		this.fichaVacina = fichaVacina;
-		this.fichaConsulta = fichaConsulta;
+		this.vacinas = vacinas;
+		this.consultas = consultas;
 	}
 
-	public Vacina getFichaVacina() 
+	public ArrayList<Vacina> getVacinas() 
 	{
-		return fichaVacina;
+		return vacinas;
 	}
 
-	public void setFichaVacina(Vacina fichaVacina) 
+	public void setVacinas(ArrayList<Vacina> vacinas) 
 	{
-		this.fichaVacina = fichaVacina;
+		this.vacinas = vacinas;
 	}
 
-	public Consultas getFichaConsulta() 
+	public ArrayList<Consultas> getConsultas()
 	{
-		return fichaConsulta;
+		return consultas;
 	}
 
-	public void setFichaConsulta(Consultas fichaConsulta) 
+	public void setConsultas(ArrayList<Consultas> consultas) 
 	{
-		this.fichaConsulta = fichaConsulta;
+		this.consultas = consultas;
 	}
+
 	
-	
-
 }
