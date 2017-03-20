@@ -26,6 +26,15 @@ public class gereCliente
 		arCliente.add(cli);	
 	}
 	
+	public void addCliente(Cliente c)
+	{					
+		int novoID = arCliente.size();
+		
+		c.setClientID(novoID);
+		
+		arCliente.add(c);	
+	}
+	
 	public Cliente getCliente(int id)
 	{
 		for(Cliente cli : arCliente)
@@ -58,6 +67,5 @@ public class gereCliente
 		}
 				
 		return totalVacAnimais;
-	}
-	
+	}	
 }
